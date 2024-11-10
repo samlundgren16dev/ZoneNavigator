@@ -1,0 +1,12 @@
+## Interface: 100105
+## Title: Zone Navigator
+## Notes: Allows players to input start and end zones to get directions.
+## Author: Sam Lundgren
+## Version: 1.0
+## RequiredDeps:
+## X-Curse-Project-ID: 999999
+## SavedVariables:
+## SavedVariablesPerCharacter:
+
+ZoneNavigator.xml
+ZoneNavigator.lua

@@ -1,0 +1,57 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="ZoneNavigatorFrame" parent="UIParent" movable="true" enableMouse="true" toplevel="true">
+        <Size>
+            <AbsDimension x="300" y="150"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Backdrop bgFile="Interface/DialogFrame/UI-DialogBox-Background">
+            <EdgeFile file="Interface/DialogFrame/UI-DialogBox-Border" tile="true" edgeSize="32"/>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+        </Backdrop>
+
+        <!-- Title Text -->
+        <FontString name="ZoneNavigatorFrameTitle" font="GameFontNormalLarge" text="Zone Navigator">
+            <Anchors>
+                <Anchor point="TOP" relativePoint="TOP" y="-10"/>
+            </Anchors>
+        </FontString>
+
+        <!-- Start Zone Input -->
+        <EditBox name="ZoneNavigatorFrameStartZone" font="GameFontNormal" maxLetters="30" autoFocus="false">
+            <Size><AbsDimension x="120" y="20"/></Size>
+            <Anchors><Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="20" y="-40"/></Anchors>
+            <Backdrop bgFile="Interface/Tooltips/UI-Tooltip-Background">
+                <Color r="0" g="0" b="0" a="0.5"/>
+            </Backdrop>
+            <Scripts><OnEnterPressed>this:ClearFocus()</OnEnterPressed></Scripts>
+        </EditBox>
+
+        <!-- End Zone Input -->
+        <EditBox name="ZoneNavigatorFrameEndZone" font="GameFontNormal" maxLetters="30" autoFocus="false">
+            <Size><AbsDimension x="120" y="20"/></Size>
+            <Anchors><Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" x="-20" y="-40"/></Anchors>
+            <Backdrop bgFile="Interface/Tooltips/UI-Tooltip-Background">
+                <Color r="0" g="0" b="0" a="0.5"/>
+            </Backdrop>
+            <Scripts><OnEnterPressed>this:ClearFocus()</OnEnterPressed></Scripts>
+        </EditBox>
+
+        <!-- Result Text -->
+        <FontString name="ZoneNavigatorFrameResult" font="GameFontNormal" text="Route will appear here.">
+            <Anchors><Anchor point="BOTTOM" relativePoint="BOTTOM" y="40"/></Anchors>
+        </FontString>
+
+        <!-- Calculate Button -->
+        <Button name="ZoneNavigatorFrameCalculateButton" text="Calculate" inherits="UIPanelButtonTemplate">
+            <Size><AbsDimension x="100" y="22"/></Size>
+            <Anchors><Anchor point="BOTTOM" relativePoint="BOTTOM" y="10"/></Anchors>
+            <Scripts>
+                <OnClick function="ZoneNavigator_OnClick"/>
+            </Scripts>
+        </Button>
+    </Frame>
+</Ui>
