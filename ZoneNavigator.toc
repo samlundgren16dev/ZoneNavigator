@@ -6,7 +6,6 @@
 ## RequiredDeps:
 ## X-Curse-Project-ID: 999999
 ## SavedVariables:
-## SavedVariablesPerCharacter:
+## SavedVariablesPerCharacter: ZoneNavigatorDB
 
-ZoneNavigator.xml
 ZoneNavigator.lua
