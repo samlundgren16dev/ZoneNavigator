@@ -1,3 +1,8 @@
+-- This script creates a settings interface for my "AdventureStats" addon in World of Warcraft.
+-- It defines a settings frame with checkboxes for enabling or disabling specific tracking features,
+-- such as kill tracking and currency tracking. The settings can be toggled via a slash command (/zn settings)
+-- or through a minimap button. The settings are saved in the AdventureStatsDB and are initialized on player login.
+
 local checkboxes = 0
 
 local settings = {
@@ -13,13 +18,13 @@ local settings = {
     },
 }
 
-local settingsFrame = CreateFrame("Frame", "ZoneNavigatorMainFrame1", UIParent, "BasicFrameTemplateWithInset")
+local settingsFrame = CreateFrame("Frame", "AdventureStatsMainFrame1", UIParent, "BasicFrameTemplateWithInset")
 settingsFrame:SetSize(400, 300)
 settingsFrame:SetPoint("CENTER")
 settingsFrame.TitleBg:SetHeight(30)
 settingsFrame.title = settingsFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
 settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 0, -3)
-settingsFrame.title:SetText("ZoneNavigator Settings")
+settingsFrame.title:SetText("AdventureStats Settings")
 settingsFrame:Hide()
 settingsFrame:EnableMouse(true)
 settingsFrame:SetMovable(true)
@@ -33,15 +38,15 @@ settingsFrame:SetScript("OnDragStop", function(self)
 end)
 
 local function CreateCheckbox(checkboxText, key, checkboxTooltip)
-    local checkbox = CreateFrame("CheckButton", "ZoneNavigatorCheckboxID" .. checkboxes, settingsFrame, "UICheckButtonTemplate")
+    local checkbox = CreateFrame("CheckButton", "AdventureStatsCheckboxID" .. checkboxes, settingsFrame, "UICheckButtonTemplate")
     checkbox.Text:SetText(checkboxText)
     checkbox:SetPoint("TOPLEFT", settingsFrame, "TOPLEFT", 10, -30 + (checkboxes * -30))
 
-    if ZoneNavigatorDB.settingsKeys[key] == nil then
-        ZoneNavigatorDB.settingsKeys[key] = true
+    if AdventureStatsDB.settingsKeys[key] == nil then
+        AdventureStatsDB.settingsKeys[key] = true
     end
 
-    checkbox:SetChecked(ZoneNavigatorDB.settingsKeys[key])
+    checkbox:SetChecked(AdventureStatsDB.settingsKeys[key])
 
     checkbox:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -53,7 +58,7 @@ local function CreateCheckbox(checkboxText, key, checkboxTooltip)
     end)
 
     checkbox:SetScript("OnClick", function(self)
-        ZoneNavigatorDB.settingsKeys[key] = self:GetChecked()
+        AdventureStatsDB.settingsKeys[key] = self:GetChecked()
     end)
 
     checkboxes = checkboxes + 1
@@ -62,8 +67,8 @@ local function CreateCheckbox(checkboxText, key, checkboxTooltip)
 end
 
 -- Section to open and close the window via typing /zn
-SLASH_ZONENAVIGATOR_SETTINGS1 = "/zn settings"
-SlashCmdList["ZONENAVIGATOR_SETTINGS"] = function()
+SLASH_AdventureStats_SETTINGS1 = "/zn settings"
+SlashCmdList["AdventureStats_SETTINGS"] = function()
     if settingsFrame:IsShown() then
         settingsFrame:Hide()
     else
@@ -77,8 +82,8 @@ eventListenerFrame:RegisterEvent("PLAYER_LOGIN")
 
 eventListenerFrame:SetScript("OnEvent", function(self, event)
 	if event == "PLAYER_LOGIN" then
-		if not ZoneNavigatorDB.settingsKeys then
-			ZoneNavigatorDB.settingsKeys = {}
+		if not AdventureStatsDB.settingsKeys then
+			AdventureStatsDB.settingsKeys = {}
 		end
 
 		for _, setting in pairs(settings) do
@@ -87,14 +92,14 @@ eventListenerFrame:SetScript("OnEvent", function(self, event)
 	end
 end)
 
-local miniButton = LibStub("LibDataBroker-1.1"):NewDataObject("ZoneNavigator", {
+local miniButton = LibStub("LibDataBroker-1.1"):NewDataObject("AdventureStats", {
     type = "data source",
-    text = "ZoneNavigator",
-    icon = "Interface\\AddOns\\ZoneNavigator\\minimap.tga",
+    text = "AdventureStats",
+    icon = "Interface\\AddOns\\AdventureStats\\minimap.tga",
     OnClick = function(self, button)
         if button == "LeftButton" then
-            -- Call ToggleMainFrame using ZoneNavigator.mainFrame
-            ZoneNavigator:ToggleMainFrame()
+            -- Call ToggleMainFrame using AdventureStats.mainFrame
+            AdventureStats:ToggleMainFrame()
         elseif button == "RightButton" then
             if settingsFrame:IsShown() then
                 settingsFrame:Hide()
@@ -109,31 +114,31 @@ local miniButton = LibStub("LibDataBroker-1.1"):NewDataObject("ZoneNavigator", {
             return
         end
 
-        tooltip:AddLine("ZoneNavigator\n\nLeft-click: Open ZoneNavigator\nRight-click: Open ZoneNavigator Settings", nil, nil, nil, nil)
+        tooltip:AddLine("AdventureStats\n\nLeft-click: Open AdventureStats\nRight-click: Open AdventureStats Settings", nil, nil, nil, nil)
     end,
 })
 
 
-local addon = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator")
-ZoneNavigatorMinimapButton = LibStub("LibDBIcon-1.0", true)
+local addon = LibStub("AceAddon-3.0"):NewAddon("AdventureStats")
+AdventureStatsMinimapButton = LibStub("LibDBIcon-1.0", true)
 
 function addon:OnInitialize()
-	self.db = LibStub("AceDB-3.0"):New("ZoneNavigatorMinimapPOS", {
+	self.db = LibStub("AceDB-3.0"):New("AdventureStatsMinimapPOS", {
 		profile = {
 			minimap = {
 				hide = false,
 			},
 		},
 	})
-	ZoneNavigatorMinimapButton:Register("ZoneNavigator", miniButton, self.db.profile.minimap)
+	AdventureStatsMinimapButton:Register("AdventureStats", miniButton, self.db.profile.minimap)
 end
 
-ZoneNavigatorMinimapButton:Show("ZoneNavigator")
+AdventureStatsMinimapButton:Show("AdventureStats")
 
-function ZoneNavigator:ToggleMainFrame()
-    if not ZoneNavigator.mainFrame:IsShown() then
-        ZoneNavigator.mainFrame:Show()
+function AdventureStats:ToggleMainFrame()
+    if not AdventureStats.mainFrame:IsShown() then
+        AdventureStats.mainFrame:Show()
     else
-        ZoneNavigator.mainFrame:Hide()
+        AdventureStats.mainFrame:Hide()
     end
 end

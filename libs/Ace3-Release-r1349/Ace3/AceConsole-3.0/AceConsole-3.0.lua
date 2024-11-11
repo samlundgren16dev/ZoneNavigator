@@ -2,7 +2,7 @@
 -- You can register slash commands to your custom functions and use the `GetArgs` function to parse them
 -- to your addons individual needs.
 --
--- **AceConsole-3.0** can be embeded into your addon, either explicitly by calling AceConsole:Embed(ZoneNavigator) or by
+-- **AceConsole-3.0** can be embeded into your addon, either explicitly by calling AceConsole:Embed(AdventureStats) or by
 -- specifying it as an embeded library in your AceAddon. All functions will be available on your addon object
 -- and can be accessed directly, without having to explicitly call AceConsole itself.\\
 -- It is recommended to embed AceConsole, otherwise you'll have to specify a custom `self` on all calls you

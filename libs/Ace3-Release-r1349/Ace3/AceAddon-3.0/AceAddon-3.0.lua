@@ -8,20 +8,20 @@
 -- @usage
 -- -- A small (but complete) addon, that doesn't do anything,
 -- -- but shows usage of the callbacks.
--- local ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator")
+-- local AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats")
 --
--- function ZoneNavigator:OnInitialize()
+-- function AdventureStats:OnInitialize()
 --   -- do init tasks here, like loading the Saved Variables,
 --   -- or setting up slash commands.
 -- end
 --
--- function ZoneNavigator:OnEnable()
+-- function AdventureStats:OnEnable()
 --   -- Do more initialization here, that really enables the use of your addon.
 --   -- Register Events, Hook functions, Create Frames, Get information from
 --   -- the game that wasn't available in OnInitialize
 -- end
 --
--- function ZoneNavigator:OnDisable()
+-- function AdventureStats:OnDisable()
 --   -- Unhook, Unregister Events, Hide frames that you created.
 --   -- You would probably only use an OnDisable if you want to
 --   -- build a "standby" mode, or be able to toggle modules on/off.
@@ -93,11 +93,11 @@ end
 -- @param lib List of libraries to embed into the addon
 -- @usage
 -- -- Create a simple addon object
--- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceEvent-3.0")
+-- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceEvent-3.0")
 --
 -- -- Create a Addon object based on the table of a frame
 -- local MyFrame = CreateFrame("Frame")
--- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon(MyFrame, "ZoneNavigator", "AceEvent-3.0")
+-- AdventureStats = LibStub("AceAddon-3.0"):NewAddon(MyFrame, "AdventureStats", "AceEvent-3.0")
 function AceAddon:NewAddon(objectorname, ...)
 	local object,name
 	local i=1
@@ -145,7 +145,7 @@ end
 -- @param silent if true, the addon is optional, silently return nil if its not found
 -- @usage
 -- -- Get the Addon
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
 function AceAddon:GetAddon(name, silent)
 	if not silent and not self.addons[name] then
 		error(("Usage: GetAddon(name): 'name' - Cannot find an AceAddon '%s'."):format(tostring(name)), 2)
@@ -200,9 +200,9 @@ end
 -- @param silent if true, the module is optional, silently return nil if its not found (optional)
 -- @usage
 -- -- Get the Addon
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
 -- -- Get the Module
--- MyModule = ZoneNavigator:GetModule("MyModule")
+-- MyModule = AdventureStats:GetModule("MyModule")
 function GetModule(self, name, silent)
 	if not self.modules[name] and not silent then
 		error(("Usage: GetModule(name, silent): 'name' - Cannot find module '%s'."):format(tostring(name)), 2)
@@ -223,11 +223,11 @@ local function IsModuleTrue(self) return true end
 -- @param lib List of libraries to embed into the addon
 -- @usage
 -- -- Create a module with some embeded libraries
--- MyModule = ZoneNavigator:NewModule("MyModule", "AceEvent-3.0", "AceHook-3.0")
+-- MyModule = AdventureStats:NewModule("MyModule", "AceEvent-3.0", "AceHook-3.0")
 --
 -- -- Create a module with a prototype
 -- local prototype = { OnEnable = function(self) print("OnEnable called!") end }
--- MyModule = ZoneNavigator:NewModule("MyModule", prototype, "AceEvent-3.0", "AceHook-3.0")
+-- MyModule = AdventureStats:NewModule("MyModule", prototype, "AceEvent-3.0", "AceHook-3.0")
 function NewModule(self, name, prototype, ...)
 	if type(name) ~= "string" then error(("Usage: NewModule(name, [prototype, [lib, lib, lib, ...]): 'name' - string expected got '%s'."):format(type(name)), 2) end
 	if type(prototype) ~= "string" and type(prototype) ~= "table" and type(prototype) ~= "nil" then error(("Usage: NewModule(name, [prototype, [lib, lib, lib, ...]): 'prototype' - table (prototype), string (lib) or nil expected got '%s'."):format(type(prototype)), 2) end
@@ -270,8 +270,8 @@ end
 -- @name //addon//:GetName
 -- @paramsig
 -- @usage
--- print(ZoneNavigator:GetName())
--- -- prints "ZoneNavigator"
+-- print(AdventureStats:GetName())
+-- -- prints "AdventureStats"
 function GetName(self)
 	return self.moduleName or self.name
 end
@@ -284,8 +284,8 @@ end
 -- @paramsig
 -- @usage
 -- -- Enable MyModule
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- MyModule = ZoneNavigator:GetModule("MyModule")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- MyModule = AdventureStats:GetModule("MyModule")
 -- MyModule:Enable()
 function Enable(self)
 	self:SetEnabledState(true)
@@ -304,9 +304,9 @@ end
 -- @name //addon//:Disable
 -- @paramsig
 -- @usage
--- -- Disable ZoneNavigator
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- ZoneNavigator:Disable()
+-- -- Disable AdventureStats
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- AdventureStats:Disable()
 function Disable(self)
 	self:SetEnabledState(false)
 	return AceAddon:DisableAddon(self)
@@ -318,13 +318,13 @@ end
 -- @paramsig name
 -- @usage
 -- -- Enable MyModule using :GetModule
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- MyModule = ZoneNavigator:GetModule("MyModule")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- MyModule = AdventureStats:GetModule("MyModule")
 -- MyModule:Enable()
 --
 -- -- Enable MyModule using the short-hand
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- ZoneNavigator:EnableModule("MyModule")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- AdventureStats:EnableModule("MyModule")
 function EnableModule(self, name)
 	local module = self:GetModule( name )
 	return module:Enable()
@@ -336,13 +336,13 @@ end
 -- @paramsig name
 -- @usage
 -- -- Disable MyModule using :GetModule
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- MyModule = ZoneNavigator:GetModule("MyModule")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- MyModule = AdventureStats:GetModule("MyModule")
 -- MyModule:Disable()
 --
 -- -- Disable MyModule using the short-hand
--- ZoneNavigator = LibStub("AceAddon-3.0"):GetAddon("ZoneNavigator")
--- ZoneNavigator:DisableModule("MyModule")
+-- AdventureStats = LibStub("AceAddon-3.0"):GetAddon("AdventureStats")
+-- AdventureStats:DisableModule("MyModule")
 function DisableModule(self, name)
 	local module = self:GetModule( name )
 	return module:Disable()
@@ -355,11 +355,11 @@ end
 -- @param lib List of libraries to embed into the addon
 -- @usage
 -- -- Create the addon object
--- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator")
+-- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats")
 -- -- Configure default libraries for modules (all modules need AceEvent-3.0)
--- ZoneNavigator:SetDefaultModuleLibraries("AceEvent-3.0")
+-- AdventureStats:SetDefaultModuleLibraries("AceEvent-3.0")
 -- -- Create a module
--- MyModule = ZoneNavigator:NewModule("MyModule")
+-- MyModule = AdventureStats:NewModule("MyModule")
 function SetDefaultModuleLibraries(self, ...)
 	if next(self.modules) then
 		error("Usage: SetDefaultModuleLibraries(...): cannot change the module defaults after a module has been registered.", 2)
@@ -374,11 +374,11 @@ end
 -- @param state Default state for new modules, true for enabled, false for disabled
 -- @usage
 -- -- Create the addon object
--- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator")
+-- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats")
 -- -- Set the default state to "disabled"
--- ZoneNavigator:SetDefaultModuleState(false)
+-- AdventureStats:SetDefaultModuleState(false)
 -- -- Create a module and explicilty enable it
--- MyModule = ZoneNavigator:NewModule("MyModule")
+-- MyModule = AdventureStats:NewModule("MyModule")
 -- MyModule:Enable()
 function SetDefaultModuleState(self, state)
 	if next(self.modules) then
@@ -396,9 +396,9 @@ end
 -- -- Define a prototype
 -- local prototype = { OnEnable = function(self) print("OnEnable called!") end }
 -- -- Set the default prototype
--- ZoneNavigator:SetDefaultModulePrototype(prototype)
+-- AdventureStats:SetDefaultModulePrototype(prototype)
 -- -- Create a module and explicitly Enable it
--- MyModule = ZoneNavigator:NewModule("MyModule")
+-- MyModule = AdventureStats:NewModule("MyModule")
 -- MyModule:Enable()
 -- -- should print "OnEnable called!" now
 -- @see NewModule
@@ -427,7 +427,7 @@ end
 -- @paramsig
 -- @usage
 -- -- Enable all modules
--- for name, module in ZoneNavigator:IterateModules() do
+-- for name, module in AdventureStats:IterateModules() do
 --    module:Enable()
 -- end
 local function IterateModules(self) return pairs(self.modules) end
@@ -441,8 +441,8 @@ local function IterateEmbeds(self) return pairs(AceAddon.embeds[self]) end
 -- @name //addon//:IsEnabled
 -- @paramsig
 -- @usage
--- if ZoneNavigator:IsEnabled() then
---     ZoneNavigator:Disable()
+-- if AdventureStats:IsEnabled() then
+--     AdventureStats:Disable()
 -- end
 local function IsEnabled(self) return self.enabledState end
 local mixins = {

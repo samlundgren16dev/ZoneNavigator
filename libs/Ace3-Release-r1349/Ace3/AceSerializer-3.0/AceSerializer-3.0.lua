@@ -3,7 +3,7 @@
 -- very large numbers or floating point numbers, and table structures. The only caveat currently is, that multiple
 -- references to the same table will be send individually.
 --
--- **AceSerializer-3.0** can be embeded into your addon, either explicitly by calling AceSerializer:Embed(ZoneNavigator) or by
+-- **AceSerializer-3.0** can be embeded into your addon, either explicitly by calling AceSerializer:Embed(AdventureStats) or by
 -- specifying it as an embeded library in your AceAddon. All functions will be available on your addon object
 -- and can be accessed directly, without having to explicitly call AceSerializer itself.\\
 -- It is recommended to embed AceSerializer, otherwise you'll have to specify a custom `self` on all calls you
