@@ -25,7 +25,7 @@
 -- You may also be interested in [[libdualspec-1-0|LibDualSpec-1.0]] to do profile switching automatically when switching specs.
 --
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("DBExample")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("DBExample")
 --
 -- -- declare defaults to be used in the DB
 -- local defaults = {
@@ -34,9 +34,9 @@
 --   }
 -- }
 --
--- function AdventureStats:OnInitialize()
---   -- Assuming the .toc says ## SavedVariables: AdventureStatsDB
---   self.db = LibStub("AceDB-3.0"):New("AdventureStatsDB", defaults, true)
+-- function ZoneNavigator:OnInitialize()
+--   -- Assuming the .toc says ## SavedVariables: ZoneNavigatorDB
+--   self.db = LibStub("AceDB-3.0"):New("ZoneNavigatorDB", defaults, true)
 -- end
 -- @class file
 -- @name AceDB-3.0.lua
@@ -698,10 +698,10 @@ end
 -- You can also pass //true// to use a shared global profile called "Default".
 -- @usage
 -- -- Create an empty DB using a character-specific default profile.
--- self.db = LibStub("AceDB-3.0"):New("AdventureStatsDB")
+-- self.db = LibStub("AceDB-3.0"):New("ZoneNavigatorDB")
 -- @usage
 -- -- Create a DB using defaults and using a shared default profile
--- self.db = LibStub("AceDB-3.0"):New("AdventureStatsDB", defaults, true)
+-- self.db = LibStub("AceDB-3.0"):New("ZoneNavigatorDB", defaults, true)
 function AceDB:New(tbl, defaults, defaultProfile)
 	if type(tbl) == "string" then
 		local name = tbl

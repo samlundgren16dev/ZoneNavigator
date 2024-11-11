@@ -13,21 +13,21 @@
 -- The table will have the different values of "arg1" as keys, and the number of occurances as their value, e.g.\\
 --   { ["player"] = 2, ["target"] = 1, ["party1"] = 1 }
 --
--- **AceBucket-3.0** can be embeded into your addon, either explicitly by calling AceBucket:Embed(AdventureStats) or by
+-- **AceBucket-3.0** can be embeded into your addon, either explicitly by calling AceBucket:Embed(ZoneNavigator) or by
 -- specifying it as an embeded library in your AceAddon. All functions will be available on your addon object
 -- and can be accessed directly, without having to explicitly call AceBucket itself.\\
 -- It is recommended to embed AceBucket, otherwise you'll have to specify a custom `self` on all calls you
 -- make into AceBucket.
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("BucketExample", "AceBucket-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("BucketExample", "AceBucket-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   -- Register a bucket that listens to all the HP related events,
 --   -- and fires once per second
 --   self:RegisterBucketEvent({"UNIT_HEALTH", "UNIT_MAXHEALTH"}, 1, "UpdateHealth")
 -- end
 --
--- function AdventureStats:UpdateHealth(units)
+-- function ZoneNavigator:UpdateHealth(units)
 --   if units.player then
 --     print("Your HP changed!")
 --   end
@@ -171,10 +171,10 @@ end
 -- @param callback The callback function, either as a function reference, or a string pointing to a method of the addon object.
 -- @return The handle of the bucket (for unregistering)
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceBucket-3.0")
--- AdventureStats:RegisterBucketEvent("BAG_UPDATE", 0.2, "UpdateBags")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceBucket-3.0")
+-- ZoneNavigator:RegisterBucketEvent("BAG_UPDATE", 0.2, "UpdateBags")
 --
--- function AdventureStats:UpdateBags()
+-- function ZoneNavigator:UpdateBags()
 --   -- do stuff
 -- end
 function AceBucket:RegisterBucketEvent(event, interval, callback)
@@ -187,10 +187,10 @@ end
 -- @param callback The callback function, either as a function reference, or a string pointing to a method of the addon object.
 -- @return The handle of the bucket (for unregistering)
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceBucket-3.0")
--- AdventureStats:RegisterBucketEvent("SomeAddon_InformationMessage", 0.2, "ProcessData")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceBucket-3.0")
+-- ZoneNavigator:RegisterBucketEvent("SomeAddon_InformationMessage", 0.2, "ProcessData")
 --
--- function AdventureStats:ProcessData()
+-- function ZoneNavigator:ProcessData()
 --   -- do stuff
 -- end
 function AceBucket:RegisterBucketMessage(message, interval, callback)

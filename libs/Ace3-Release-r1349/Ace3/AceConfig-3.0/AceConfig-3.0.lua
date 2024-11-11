@@ -41,7 +41,7 @@ local pcall, error, type, pairs = pcall, error, type, pairs
 -- @param slashcmd A slash command to register for the option table, or a table of slash commands.
 -- @usage
 -- local AceConfig = LibStub("AceConfig-3.0")
--- AceConfig:RegisterOptionsTable("AdventureStats", myOptions, {"/myslash", "/my"})
+-- AceConfig:RegisterOptionsTable("ZoneNavigator", myOptions, {"/myslash", "/my"})
 function AceConfig:RegisterOptionsTable(appName, options, slashcmd)
 	local ok,msg = pcall(cfgreg.RegisterOptionsTable, self, appName, options)
 	if not ok then error(msg, 2) end

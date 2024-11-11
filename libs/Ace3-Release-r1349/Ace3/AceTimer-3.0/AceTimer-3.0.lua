@@ -8,7 +8,7 @@
 -- All `:Schedule` functions will return a handle to the current timer, which you will need to store if you
 -- need to cancel the timer you just registered.
 --
--- **AceTimer-3.0** can be embeded into your addon, either explicitly by calling AceTimer:Embed(AdventureStats) or by
+-- **AceTimer-3.0** can be embeded into your addon, either explicitly by calling AceTimer:Embed(ZoneNavigator) or by
 -- specifying it as an embeded library in your AceAddon. All functions will be available on your addon object
 -- and can be accessed directly, without having to explicitly call AceTimer itself.\\
 -- It is recommended to embed AceTimer, otherwise you'll have to specify a custom `self` on all calls you
@@ -82,13 +82,13 @@ end
 -- @param delay Delay for the timer, in seconds.
 -- @param ... An optional, unlimited amount of arguments to pass to the callback function.
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceTimer-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceTimer-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   self:ScheduleTimer("TimerFeedback", 5)
 -- end
 --
--- function AdventureStats:TimerFeedback()
+-- function ZoneNavigator:TimerFeedback()
 --   print("5 seconds passed")
 -- end
 function AceTimer:ScheduleTimer(func, delay, ...)
@@ -111,14 +111,14 @@ end
 -- @param delay Delay for the timer, in seconds.
 -- @param ... An optional, unlimited amount of arguments to pass to the callback function.
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceTimer-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceTimer-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   self.timerCount = 0
 --   self.testTimer = self:ScheduleRepeatingTimer("TimerFeedback", 5)
 -- end
 --
--- function AdventureStats:TimerFeedback()
+-- function ZoneNavigator:TimerFeedback()
 --   self.timerCount = self.timerCount + 1
 --   print(("%d seconds passed"):format(5 * self.timerCount))
 --   -- run 30 seconds in total

@@ -2,7 +2,7 @@
 -- Using AceHook-3.0 is recommended when you need to unhook your hooks again, so the hook chain isn't broken
 -- when you manually restore the original function.
 --
--- **AceHook-3.0** can be embeded into your addon, either explicitly by calling AceHook:Embed(AdventureStats) or by
+-- **AceHook-3.0** can be embeded into your addon, either explicitly by calling AceHook:Embed(ZoneNavigator) or by
 -- specifying it as an embeded library in your AceAddon. All functions will be available on your addon object
 -- and can be accessed directly, without having to explicitly call AceHook itself.\\
 -- It is recommended to embed AceHook, otherwise you'll have to specify a custom `self` on all calls you
@@ -260,14 +260,14 @@ end
 -- @param hookSecure If true, AceHook will allow hooking of secure functions.
 -- @usage
 -- -- create an addon with AceHook embeded
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   -- Hook ActionButton_UpdateHotkeys, overwriting the secure status
 --   self:Hook("ActionButton_UpdateHotkeys", true)
 -- end
 --
--- function AdventureStats:ActionButton_UpdateHotkeys(button, type)
+-- function ZoneNavigator:ActionButton_UpdateHotkeys(button, type)
 --   print(button:GetName() .. " is updating its HotKey")
 -- end
 function AceHook:Hook(object, method, handler, hookSecure)
@@ -295,14 +295,14 @@ end
 -- @param hookSecure If true, AceHook will allow hooking of secure functions.
 -- @usage
 -- -- create an addon with AceHook embeded
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   -- Hook ActionButton_UpdateHotkeys, overwriting the secure status
 --   self:RawHook("ActionButton_UpdateHotkeys", true)
 -- end
 --
--- function AdventureStats:ActionButton_UpdateHotkeys(button, type)
+-- function ZoneNavigator:ActionButton_UpdateHotkeys(button, type)
 --   if button:GetName() == "MyButton" then
 --     -- do stuff here
 --   else
@@ -352,14 +352,14 @@ end
 -- @param handler The handler for the hook, a funcref or a method name. (Defaults to the name of the hooked script)
 -- @usage
 -- -- create an addon with AceHook embeded
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   -- Hook the OnShow of FriendsFrame
 --   self:HookScript(FriendsFrame, "OnShow", "FriendsFrameOnShow")
 -- end
 --
--- function AdventureStats:FriendsFrameOnShow(frame)
+-- function ZoneNavigator:FriendsFrameOnShow(frame)
 --   print("The FriendsFrame was shown!")
 -- end
 function AceHook:HookScript(frame, script, handler)
@@ -378,14 +378,14 @@ end
 -- @param handler The handler for the hook, a funcref or a method name. (Defaults to the name of the hooked script)
 -- @usage
 -- -- create an addon with AceHook embeded
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("HookDemo", "AceHook-3.0")
 --
--- function AdventureStats:OnEnable()
+-- function ZoneNavigator:OnEnable()
 --   -- Hook the OnShow of FriendsFrame
 --   self:RawHookScript(FriendsFrame, "OnShow", "FriendsFrameOnShow")
 -- end
 --
--- function AdventureStats:FriendsFrameOnShow(frame)
+-- function ZoneNavigator:FriendsFrameOnShow(frame)
 --   -- Call the original function
 --   self.hooks[frame].OnShow(frame)
 --   -- Do our processing

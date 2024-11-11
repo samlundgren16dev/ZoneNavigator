@@ -727,17 +727,17 @@ end
 -- @param appName The application name as given to `:RegisterOptionsTable()`
 -- @param input The commandline input (as given by the WoW handler, i.e. without the command itself)
 -- @usage
--- AdventureStats = LibStub("AceAddon-3.0"):NewAddon("AdventureStats", "AceConsole-3.0")
+-- ZoneNavigator = LibStub("AceAddon-3.0"):NewAddon("ZoneNavigator", "AceConsole-3.0")
 -- -- Use AceConsole-3.0 to register a Chat Command
--- AdventureStats:RegisterChatCommand("mychat", "ChatCommand")
+-- ZoneNavigator:RegisterChatCommand("mychat", "ChatCommand")
 --
 -- -- Show the GUI if no input is supplied, otherwise handle the chat input.
--- function AdventureStats:ChatCommand(input)
+-- function ZoneNavigator:ChatCommand(input)
 --   -- Assuming "MyOptions" is the appName of a valid options table
 --   if not input or input:trim() == "" then
 --     LibStub("AceConfigDialog-3.0"):Open("MyOptions")
 --   else
---     LibStub("AceConfigCmd-3.0").HandleCommand(AdventureStats, "mychat", "MyOptions", input)
+--     LibStub("AceConfigCmd-3.0").HandleCommand(ZoneNavigator, "mychat", "MyOptions", input)
 --   end
 -- end
 function AceConfigCmd:HandleCommand(slashcmd, appName, input)
