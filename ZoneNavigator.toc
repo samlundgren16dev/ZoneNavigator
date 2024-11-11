@@ -3,13 +3,9 @@
 ## Notes: Allows players to input start and end zones to get directions.
 ## Author: Sam Lundgren
 ## Version: 1.0
+## RequiredDeps:
+## X-Curse-Project-ID: 999999
 ## SavedVariables:
 ## SavedVariablesPerCharacter: ZoneNavigatorDB
-# Libraries
-libs/Ace3-Release-r1349/Ace3/AceAddon-3.0/AceAddon-3.0.lua
-libs/Ace3-Release-r1349/Ace3/AceDB-3.0/AceDB-3.0.lua
-libs/LibDBIcon-1.0-v11.0.0/LibDBIcon-1.0/embeds.xml
 
-# Main Files
 ZoneNavigator.lua
-ZoneNavigatorSettings.lua
